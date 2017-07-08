@@ -2,7 +2,7 @@ from glob import glob
 from os import chdir, getcwd
 from subprocess import call
 
-data_dir = "/Users/hvs/Projects/retrosheet/data"
+data_dir = "data/retrosheet/pbp"
 prev_dir = getcwd()
 
 chdir(data_dir)
