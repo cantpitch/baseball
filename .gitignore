@@ -1,2 +1,4 @@
 data
 zips
+*.pyc
+__pycache__
