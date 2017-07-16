@@ -1,6 +1,5 @@
-
-drop table if exists retro_raw_gamelogs_cwgame;
-create table retro_raw_gamelogs_cwgame (
+drop table if exists retro_raw_sub;
+create table retro_raw_sub (
     game_id varchar(12) not null,
     inning smallint,
     batting_team_id char(3),
@@ -13,9 +12,8 @@ create table retro_raw_gamelogs_cwgame (
     event_id integer
 );
 
+drop table if exists retro_postseason_raw_sub;
+create table retro_postseason_raw_sub (like retro_raw_sub);
 
-drop table if exists retro_postseason_raw_gamelogs_cwgame;
-create table retro_postseason_raw_gamelogs_cwgame (like retro_raw_gamelogs_cwgame);
-
-drop table if exists retro_allstar_raw_gamelogs_cwgame;
-create table retro_allstar_raw_gamelogs_cwgame (like retro_raw_gamelogs_cwgame);
+drop table if exists retro_allstar_raw_sub;
+create table retro_allstar_raw_sub (like retro_raw_sub);

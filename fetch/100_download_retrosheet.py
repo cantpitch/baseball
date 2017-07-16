@@ -1,4 +1,5 @@
 import urllib.request
+from os import makedirs
 
 event_files = ['1920seve.zip', '1930seve.zip', '1940seve.zip', '1950seve.zip', 
                '1960seve.zip', '1970seve.zip', '1980seve.zip', '1990seve.zip',
@@ -11,7 +12,7 @@ gamelogs_end   = 2016
 
 post_gamelogs = ['glws.zip', 'glas.zip', 'glwc.zip', 'gldv.zip', 'gllc.zip']
 
-
+makedirs('../zips', exist_ok=True)
 
 url = 'http://www.retrosheet.org'
 

@@ -4,7 +4,7 @@ from os.path import isfile
 from subprocess import call
 
 
-base_dir = "/home/hvs/projects/baseball"
+base_dir = "/Users/hvs/Projects/baseball"
 data_dir = "{}/data/retrosheet".format(base_dir)
 sub_dirs = ['regular', 'postseason', 'allstar']
 prev_dir = getcwd()
@@ -34,7 +34,7 @@ for d in sub_dirs:
         print("Processing {}".format(filename))
         year = filename[:4]
         call("cwevent -q -y {} -f 0-96 -x 0-62 {} >> playbyplay.csv".format(year, filename), shell=True)
-        call("cwgame -q -y {} -f 0,4-5,19-31 -x 0-94 {} >> gamelogs_cwgame.csv".format(year, filename), shell=True)
+        call("cwgame -q -y {} -f 0,4-5,19-31 {} >> gamelogs_cwgame.csv".format(year, filename), shell=True)
         call("cwsub -q -y {} {} >> substitutions.csv".format(year, filename), shell=True)
     
     

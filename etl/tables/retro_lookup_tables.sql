@@ -48,6 +48,88 @@ insert into retro_bases_codes values
 (6, '23',  '2B & 3B'),
 (7, '123', 'Bases Loaded');
 
+drop table if exists retro_how_scored;
+create table retro_how_scored (
+  how_scored_cd smallint primary key,
+  description varchar(10) not null
+);
+
+insert into retro_how_scored values
+(0, 'unknown'),
+(1, 'park'),
+(2, 'tv'),
+(3, 'radio');
+
+drop table if exists retro_pitches_entered;
+create table retro_pitches_entered (
+  pitches_entered_cd smallint primary key,
+  description varchar(10) not null
+);
+
+insert into retro_pitches_entered values
+(0, 'unknown'),
+(1, 'pitches'),
+(2, 'count'),
+(3, 'none');
+
+drop table if exists retro_wind_direction;
+create table retro_wind_direction (
+  wind_direction_cd smallint primary key,
+  description varchar(10) not null
+);
+
+insert into retro_wind_direction values
+(0, 'unknown'),
+(1, 'tolf'),
+(2, 'tocf'),
+(3, 'torf'),
+(4, 'ltor'),
+(5, 'fromlf'),
+(6, 'fromcf'),
+(7, 'fromrf'),
+(8, 'rtol');
+
+drop table if exists retro_field_condition;
+create table retro_field_condition (
+  field_condition_cd smallint primary key,
+  description varchar(10) not null
+);
+
+insert into retro_field_condition values
+(0, 'unknown'),
+(1, 'soaked'),
+(2, 'wet'),
+(3, 'damp'),
+(4, 'dry');
+
+drop table if exists retro_precipitation;
+create table retro_precipitation (
+  precipitation_cd smallint primary key,
+  description varchar(10) not null
+);
+
+insert into retro_precipitation values
+(0, 'unknown'),
+(1, 'none'),
+(2, 'drizzle'),
+(3, 'showers'),
+(4, 'rain'),
+(5, 'snow');
+
+drop table if exists retro_sky;
+create table retro_sky (
+  sky_cd smallint primary key,
+  description varchar(10) not null
+);
+
+insert into retro_sky values
+(0, 'unknown'),
+(1, 'sunny'),
+(2, 'cloudy'),
+(3, 'overcast'),
+(4, 'night'),
+(5, 'dome');
+
 drop table if exists retro_teams;
 create table retro_teams (
     franch_id char(3) not null,
