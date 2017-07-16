@@ -1,14 +1,14 @@
 from glob import glob
 from os import chdir, getcwd, remove
-from os.path import isfile
+import os.path
 from subprocess import call
+import sys
 
-
-base_dir = "/Users/hvs/Projects/baseball"
+curr_dir = os.path.dirname(os.path.realpath(__file__))
+base_dir = os.path.abspath(os.path.join(curr_dir, os.pardir))
 data_dir = "{}/data/retrosheet".format(base_dir)
 sub_dirs = ['regular', 'postseason', 'allstar']
 prev_dir = getcwd()
-
 
 for d in sub_dirs:
     curr_dir = data_dir + '/' + d
@@ -19,13 +19,13 @@ for d in sub_dirs:
     files.sort()
     
     ## Cleanup previous runs
-    if isfile('playbyplay.csv'):
+    if os.path.isfile('playbyplay.csv'):
         remove('playbyplay.csv')
     
-    if isfile('gamelogs_cwgame.csv'):
+    if os.path.isfile('gamelogs_cwgame.csv'):
         remove('gamelogs_cwgame.csv')
     
-    if isfile('substitutions.csv'):
+    if os.path.isfile('substitutions.csv'):
         remove('substitutions.csv')
     
     call("cat GL*.TXT > gamelogs.csv", shell=True)
