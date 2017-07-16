@@ -17,19 +17,19 @@ url = 'http://www.retrosheet.org'
 
 for file in event_files:
     src = url + '/events/' + file
-    dst = 'zips/' + file
+    dst = '../zips/' + file
     print("Downloading {0} to {1}".format(src, dst))
-   urllib.request.urlretrieve(src, dst)
+    urllib.request.urlretrieve(src, dst)
 
 for year in range(gamelogs_start, gamelogs_end + 1):
     file = 'gl' + str(year) + '.zip'
     src = url + '/gamelogs/' + file
-    dst = 'zips/' + file
+    dst = '../zips/' + file
     print("Downloading {0} to {1}".format(src, dst))
     urllib.request.urlretrieve(src, dst)
 
 for file in post_gamelogs:
     src = url + '/gamelogs/' + file
-    dst = 'zips/' + file
+    dst = '../zips/' + file
     print("Downloading {0} to {1}".format(src, dst))
     urllib.request.urlretrieve(src, dst)

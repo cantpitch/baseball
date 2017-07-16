@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASE=/home/hvs/projects/baseball
+BASE=/Users/hvs/Projects/baseball
 
 mkdir -p $BASE/data/retrosheet/regular
 mkdir -p $BASE/data/retrosheet/postseason
