@@ -13,7 +13,7 @@ create table retro_raw_sub (
 );
 
 drop table if exists retro_postseason_raw_sub;
-create table retro_postseason_raw_sub (like retro_raw_sub);
+create table retro_postseason_raw_sub like retro_raw_sub;
 
 drop table if exists retro_allstar_raw_sub;
-create table retro_allstar_raw_sub (like retro_raw_sub);
+create table retro_allstar_raw_sub like retro_raw_sub;

@@ -96,7 +96,7 @@
   ass3_fld_cd smallint null,
   ass4_fld_cd smallint null,
   ass5_fld_cd smallint null,
-  event_id smallint null,
+  event_id smallint not null,
   home_team_id varchar(3) null,
   bat_team_id varchar(3) null,
   fld_team_id varchar(3) null,
@@ -164,10 +164,10 @@
 );
 
 drop table if exists retro_postseason_raw_events;
-create table retro_postseason_raw_events (like retro_raw_events);
+create table retro_postseason_raw_events like retro_raw_events;
 
 drop table if exists retro_allstar_raw_events;
-create table retro_allstar_raw_events (like retro_raw_events);
+create table retro_allstar_raw_events like retro_raw_events;
 
 
 

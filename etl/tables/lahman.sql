@@ -1,0 +1,444 @@
+CREATE TABLE Allstar (
+    LahmanId VARCHAR(9), 
+    `Year` SMALLINT
+    GameNum TINYINT UNSIGNED,
+    RetroGameId VARCHAR(12),
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    GP TINYINT UNSIGNED,
+    StartingPos TINYINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`)
+);
+
+CREATE TABLE Appearances (
+    `Year` SMALLINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    LahmanId VARCHAR(9),
+    GAll SMALLINT UNSIGNED,
+    GS SMALLINT UNSIGNED,
+    G_Batting SMALLINT UNSIGNED,
+    G_Defense SMALLINT UNSIGNED,
+    G_P SMALLINT UNSIGNED,
+    G_C SMALLINT UNSIGNED,
+    G_1B SMALLINT UNSIGNED,
+    G_2B SMALLINT UNSIGNED,
+    G_3B SMALLINT UNSIGNED,
+    G_SS SMALLINT UNSIGNED,
+    G_LF SMALLINT UNSIGNED,
+    G_CF SMALLINT UNSIGNED,
+    G_RF SMALLINT UNSIGNED,
+    G_OF SMALLINT UNSIGNED,
+    G_DH SMALLINT UNSIGNED,
+    G_PH SMALLINT UNSIGNED,
+    G_PR SMALLINT UNSIGNED,
+    PRIMARY KEY (`Year`, LahmanTeamId, LeagueId, LahmanId)
+);
+
+CREATE TABLE AwardsManagers (
+    LahmanId VARCHAR(9),
+    AwardName VARCHAR(50),
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    Tie ENUM('Y','N'),
+    Notes VARCHAR(255),
+    PRIMARY KEY (LahmanId, AwardName, `Year`, LeagueId)
+);
+
+CREATE TABLE AwardsPlayers (
+    LahmanId VARCHAR(9),
+    AwardName VARCHAR(50),
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    Tie ENUM('Y','N'),
+    Notes VARCHAR(255),
+    PRIMARY KEY (LahmanId, AwardName, `Year`, LeagueId)
+);
+
+CREATE TABLE AwardsShareManagers (
+    AwardName VARCHAR(50),
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    LahmanId VARCHAR(9),
+    PointsWon SMALLINT UNSIGNED,
+    PointsMax SMALLINT UNSIGNED,
+    VotesFirst SMALLINT UNSIGNED,
+    PRIMARY KEY (AwardName, `Year`, LeagueId, LahmanId)
+);
+
+CREATE TABLE AwardsSharePlayers (
+    AwardName VARCHAR(50),
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    LahmanId VARCHAR(9),
+    PointsWon SMALLINT UNSIGNED,
+    PointsMax SMALLINT UNSIGNED,
+    VotesFirst SMALLINT UNSIGNED,
+    PRIMARY KEY (AwardName, `Year`, LeagueId, LahmanId)
+);
+
+CREATE TABLE Batting (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    Stint TINYINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    G SMALLINT UNSIGNED,
+    AB SMALLINT UNSIGNED,
+    R SMALLINT UNSIGNED,
+    H SMALLINT UNSIGNED,
+    2B TINYINT UNSIGNED,
+    3B TINYINT UNSIGNED,
+    HR TINYINT UNSIGNED,
+    RBI SMALLINT UNSIGNED,
+    SB SMALLINT UNSIGNED,
+    CS SMALLINT UNSIGNED,
+    BB SMALLINT UNSIGNED,
+    SO SMALLINT UNSIGNED,
+    IBB SMALLINT UNSIGNED,
+    HBP TINYINT UNSIGNED,
+    SH TINYINT UNSIGNED,
+    SF TINYINT UNSIGNED,
+    GIDP TINYINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId)
+);
+
+CREATE TABLE BattingPost (
+    `Year` SMALLINT UNSIGNED,
+    `Round` VARCHAR(5),
+    LahmanId VARCHAR(9),
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    G TINYINT UNSIGNED,
+    AB TINYINT UNSIGNED,
+    R TINYINT UNSIGNED,
+    H TINYINT UNSIGNED,
+    `2B` TINYINT UNSIGNED,
+    `3B` TINYINT UNSIGNED,
+    HR TINYINT UNSIGNED,
+    RBI TINYINT UNSIGNED,
+    SB TINYINT UNSIGNED,
+    CS TINYINT UNSIGNED,
+    BB TINYINT UNSIGNED,
+    SO TINYINT UNSIGNED,
+    IBB TINYINT UNSIGNED,
+    HBP TINYINT UNSIGNED,
+    SH TINYINT UNSIGNED,
+    SF TINYINT UNSIGNED,
+    GIDP TINYINT UNSIGNED,
+    PRIMARY KEY (`Year`, `Round`, LahmanId, LahmanTeamId, LeagueId)
+);
+
+CREATE TABLE CollegePlaying (
+    LahmanId VARCHAR(9),
+    SchoolId VARCHAR(15),
+    `Year` SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, SchoolId, `Year`)
+);
+
+CREATE TABLE Fielding (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    Stint TINYINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    `Position` VARCHAR(2),
+    G SMALLINT UNSIGNED,
+    GS SMALLINT UNSIGNED,
+    InnOuts SMALLINT UNSIGNED,
+    PO SMALLINT UNSIGNED,
+    A SMALLINT UNSIGNED,
+    E SMALLINT UNSIGNED,
+    DP SMALLINT UNSIGNED,
+    PB SMALLINT UNSIGNED,
+    WP SMALLINT UNSIGNED,
+    SB SMALLINT UNSIGNED,
+    CS SMALLINT UNSIGNED,
+    ZR SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId, `Position`)
+);
+
+CREATE TABLE FieldingOF (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    Stint TINYINT UNSIGNED,
+    G_LF SMALLINT UNSIGNED,
+    G_CF SMALLINT UNSIGNED,
+    G_RF SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, Stint)
+);
+
+CREATE TABLE FieldingOFSplit (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    Stint TINYINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    `Position` VARCHAR(2),
+    G SMALLINT UNSIGNED,
+    GS SMALLINT UNSIGNED,
+    InnOuts SMALLINT UNSIGNED,
+    PO SMALLINT UNSIGNED,
+    A SMALLINT UNSIGNED,
+    E SMALLINT UNSIGNED,
+    DP SMALLINT UNSIGNED,
+    PB SMALLINT UNSIGNED,
+    WP SMALLINT UNSIGNED,
+    SB SMALLINT UNSIGNED,
+    CS SMALLINT UNSIGNED,
+    ZR SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId, `Position`)
+);
+
+CREATE TABLE FieldingPost (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    `Round` VARCHAR(5),
+    `Position` VARCHAR(2),
+    G SMALLINT UNSIGNED,
+    GS SMALLINT UNSIGNED,
+    InnOuts SMALLINT UNSIGNED,
+    PO SMALLINT UNSIGNED,
+    A SMALLINT UNSIGNED,
+    E SMALLINT UNSIGNED,
+    DP SMALLINT UNSIGNED,
+    TP SMALLINT UNSIGNED,
+    PB SMALLINT UNSIGNED,
+    SB SMALLINT UNSIGNED,
+    CS SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, `Round`, `Position`)
+);
+
+CREATE TABLE HallOfFame ( 
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    VotedBy VARCHAR(20),
+    Ballots SMALLINT UNSIGNED,
+    Needed SMALLINT UNSIGNED,
+    Votes SMALLINT UNSIGNED,
+    Inducted ENUM('Y','N'),
+    Category VARCHAR(20),
+    NeededNote VARCHAR(20),
+    PRIMARY KEY (LahmanId, `Year`)
+);
+
+CREATE TABLE HomeGames (
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    LahmanTeamId VARCHAR(3),
+    RetroParkId VARCHAR(5),
+    FirstGameDate DATE,
+    LastGameDate DATE,
+    TotalGames TINYINT UNSIGNED,
+    TotalDays TINYINT UNSIGNED,
+    Attendance MEDIUMINT UNSIGNED,
+    PRIMARY KEY (`Year`, LeagueId, LahmanTeamId, RetroParkId)
+);
+
+CREATE TABLE Managers (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(3),
+    ManagerNum TINYINT UNSIGNED,
+    G TINYINT UNSIGNED,
+    W TINYINT UNSIGNED,
+    L TINYINT UNSIGNED,
+    Rank TINYINT UNSIGNED,
+    PlayerManager ENUM ('Y','N'),
+    PRIMERY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, ManagerNum)
+);
+
+CREATE TABLE ManagersHalf ( 
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(3),
+    ManagerNum TINYINT UNSIGNED,
+    Half TINYINT UNSIGNED,
+    G TINYINT UNSIGNED,
+    W TINYINT UNSIGNED,
+    L TINYINT UNSIGNED,
+    Rank TINYINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, ManagerNum)
+);
+
+CREATE TABLE Parks (
+    RetroParkId VARCHAR(5) PRIMARY KEY,
+    ParkName VARCHAR(50),
+    ParkAliases VARCHAR(50),
+    City VARCHAR(20),
+    StateProvince VARCHAR(20),
+    Country2 VARCHAR(2)
+);
+
+CREATE TABLE People (
+    LahmanId VARCHAR(9) PRIMARY KEY,
+    BirthYear SMALLINT UNSIGNED,
+    BirthMonth TINYINT UNSIGNED,
+    BirthDay TINYINT UNSIGNED,
+    BirthCountry VARCHAR(20),
+    BirthStateProvince VARCHAR(25),
+    BirthCity VARCHAR(50),
+    DeathYear SMALLINT UNSIGNED,
+    DeathMonth TINYINT UNSIGNED,
+    DeathDay TINYINT UNSIGNED,
+    DeathCountry VARCHAR(20),
+    DeathStateProvince VARCHAR(25),
+    DeathCity VARCHAR(50),
+    NameFirst VARCHAR(20),
+    NameLast VARCHAR(20),
+    NameGiven VARCHAR(50),
+    WeightLbs SMALLINT UNSIGNED,
+    HeightInches SMALLINT UNSIGNED,
+    Bats ENUM('R','L','B'),
+    Throws ENUM('R','L','B','S'),
+    DebutDate DATE,
+    FinalGame DATE,
+    RetroId VARCHAR(8),
+    BBRefId VARCHAR(9)
+);
+
+CREATE TABLE Pitching (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    Stint TINYINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    W SMALLINT UNSIGNED,
+    L SMALLINT UNSIGNED,
+    G SMALLINT UNSIGNED,
+    GS SMALLINT UNSIGNED,
+    CG SMALLINT UNSIGNED,
+    SHO SMALLINT UNSIGNED,
+    SV SMALLINT UNSIGNED,
+    IPouts SMALLINT UNSIGNED,
+    H SMALLINT UNSIGNED,
+    ER SMALLINT UNSIGNED,
+    HR SMALLINT UNSIGNED,
+    BB SMALLINT UNSIGNED,
+    SO SMALLINT UNSIGNED,
+    BAOpp DECIMAL(4,3),
+    ERA DECIMAL(5,3),
+    IBB SMALLINT UNSIGNED,
+    WP SMALLINT UNSIGNED,
+    HBP SMALLINT UNSIGNED,
+    BK SMALLINT UNSIGNED,
+    BFP SMALLINT UNSIGNED,
+    GF SMALLINT UNSIGNED,
+    R SMALLINT UNSIGNED,
+    SH SMALLINT UNSIGNED,
+    SF SMALLINT UNSIGNED,
+    GIDP SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId)
+);
+
+CREATE TABLE PitchingPost (
+    LahmanId VARCHAR(9),
+    `Year` SMALLINT UNSIGNED,
+    `Round` VARCHAR(5),
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(3),    
+    W SMALLINT UNSIGNED,
+    L SMALLINT UNSIGNED,
+    G SMALLINT UNSIGNED,
+    GS SMALLINT UNSIGNED,
+    CG SMALLINT UNSIGNED,
+    SHO SMALLINT UNSIGNED,
+    SV SMALLINT UNSIGNED,
+    IPouts SMALLINT UNSIGNED,
+    H SMALLINT UNSIGNED,
+    ER SMALLINT UNSIGNED,
+    HR SMALLINT UNSIGNED,
+    BB SMALLINT UNSIGNED,
+    SO SMALLINT UNSIGNED,
+    BAOpp DECIMAL(4,3),
+    ERA DECIMAL(5,3),
+    IBB SMALLINT UNSIGNED,
+    WP SMALLINT UNSIGNED,
+    HBP SMALLINT UNSIGNED,
+    BK SMALLINT UNSIGNED,
+    BFP SMALLINT UNSIGNED,
+    GF SMALLINT UNSIGNED,
+    R SMALLINT UNSIGNED,
+    SH SMALLINT UNSIGNED,
+    SF SMALLINT UNSIGNED,
+    GIDP SMALLINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, `Round`, LahmanTeamId, LeagueId)
+);
+
+CREATE TABLE Salaries (
+    `Year` SMALLINT UNSIGNED,
+    LahmanTeamId VARCHAR(3),
+    LeagueId VARCHAR(2),
+    LahmanId VARCHAR(9),
+    Salary DECIMAL(10,2),
+    PRIMARY KEY (`Year`, LahmanTeamId, LeagueId, LahmanId)
+);
+
+CREATE TABLE Schools (
+    SchoolId VARCHAR(15) PRIMARY KEY,
+    Name VARCHAR(100),
+    City VARCHAR(100),
+    State VARCHAR(20),
+    Country3 VARCHAR(3)
+);
+
+CREATE TABLE SeriesPost (
+    `Year` SMALLINT UNSIGNED,
+    `Round` VARCHAR(5),
+    LahmanTeamIdWinner VARCHAR(3),
+    LeagueIdWinner VARCHAR(2),
+    LahmanTeamIdLoser VARCHAR(3),
+    LeagueIdLoser VARCHAR(2),
+    Wins TINYINT UNSIGNED,
+    Losses TINYINT UNSIGNED,
+    Ties TINYINT UNSIGNED,
+    PRIMARY KEY (`Year`, `Round`)
+);
+
+CREATE TABLE Teams (
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    LahmanTeamId VARCHAR(3),
+    LahmanFranchId VARCHAR(3),
+    Division ENUM('E','W','C'),
+    Rank TINYINT UNSIGNED,
+    GHome TINYINT UNSIGNED,
+    WonDivision ENUM('Y','N'),
+    WonWildCard ENUM('Y','N'),
+    WonLeague ENUM('Y','N'),
+    WonWorldSeries ENUM('Y','N'),
+    Name VARCHAR(50),
+    ParkName VARCHAR(100),
+    Attendance MEDIUMINT UNSIGNED,
+    BPF TINYINT UNSIGNED,
+    PPF TINYINT UNSIGNED,
+    BBRefTeamId VARCHAR(3),
+    Lahman45TeamId VARCHAR(3),
+    RetroTeamId VARCHAR(3),
+    PRIMARY KEY (`Year`, LeagueId, LahmanTeamId, LahmanFranchId)
+);
+
+CREATE TABLE TeamsFranchises (
+    LahmanFranchId VARCHAR(3) PRIMARY KEY,
+    Name VARCHAR(50),
+    Active ENUM('Y','N','NA'),
+    NALahmanTeamId VARCHAR(3)
+);
+
+CREATE TABLE TeamsHalf (
+    `Year` SMALLINT UNSIGNED,
+    LeagueId VARCHAR(2),
+    LahmanTeamId VARCHAR(3),
+    Half TINYINT UNSIGNED,
+    Division ENUM('E','W','C'),
+    WonDivision ENUM('Y','N'),
+    Rank TINYINT UNSIGNED,
+    G TINYINT UNSIGNED,
+    W TINYINT UNSIGNED,
+    L TINYINT UNSIGNED,
+    PRIMARY KEY (`Year`, LeagueId, LahmanTeamId, Half)
+);

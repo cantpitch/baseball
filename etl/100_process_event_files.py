@@ -17,25 +17,31 @@ for d in sub_dirs:
 
     files = glob("*.EV[ANPE]")
     files.sort()
-    
+
+    prefix = f'{d}_' if d != 'regular' else ''
+    events_file = f'retro_{prefix}raw_events.csv'
+    gamelogs_cwgame_file = f'retro_{prefix}raw_gamelogs_cwgame.csv'
+    sub_file = f'retro_{prefix}raw_sub.csv'
+    gamelogs_file = f'retro_{prefix}raw_gamelogs.csv'
+
     ## Cleanup previous runs
-    if os.path.isfile('playbyplay.csv'):
-        remove('playbyplay.csv')
+    if os.path.isfile(events_file):
+        remove(events_file)
     
-    if os.path.isfile('gamelogs_cwgame.csv'):
-        remove('gamelogs_cwgame.csv')
+    if os.path.isfile(gamelogs_cwgame_file):
+        remove(gamelogs_cwgame_file)
     
-    if os.path.isfile('substitutions.csv'):
-        remove('substitutions.csv')
+    if os.path.isfile(sub_file):
+        remove(sub_file)
     
-    call("cat GL*.TXT > gamelogs.csv", shell=True)
+    call(f'cat GL*.TXT > {gamelogs_file}', shell=True)
     
     for filename in files:
-        print("Processing {}".format(filename))
+        print(f'Processing {filename}')
         year = filename[:4]
-        call("cwevent -q -y {} -f 0-96 -x 0-62 {} >> playbyplay.csv".format(year, filename), shell=True)
-        call("cwgame -q -y {} -f 0,4-5,19-31 {} >> gamelogs_cwgame.csv".format(year, filename), shell=True)
-        call("cwsub -q -y {} {} >> substitutions.csv".format(year, filename), shell=True)
+        call("cwevent -q -y {} -f 0-96 -x 0-62 {} >> {}".format(year, filename, events_file), shell=True)
+        call("cwgame -q -y {} -f 0,4-5,19-31 {} >> {}".format(year, filename, gamelogs_cwgame_file), shell=True)
+        call("cwsub -q -y {} {} >> {}".format(year, filename, sub_file), shell=True)
     
     
 chdir(prev_dir)

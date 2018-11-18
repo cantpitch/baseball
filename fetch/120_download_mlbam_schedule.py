@@ -11,8 +11,8 @@ parser.add_argument('-y', '--year', type=int, help='the year to fetch')
 parser.add_argument('-m', '--month', type=int, help='the month to fetch')
 args = parser.parse_args()
 
-pitchfx_year_start  = 2008
-pitchfx_year_end    = 2017
+pitchfx_year_start  = 2018 #2008
+pitchfx_year_end    = 2018 #2017
 pitchfx_month_start = 3
 pitchfx_month_end   = 11
 start_year          = args.year or pitchfx_year_start

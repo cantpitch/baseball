@@ -20,7 +20,7 @@ create table retro_raw_gamelogs_cwgame (
 
 
 drop table if exists retro_postseason_raw_gamelogs_cwgame;
-create table retro_postseason_raw_gamelogs_cwgame (like retro_raw_gamelogs_cwgame);
+create table retro_postseason_raw_gamelogs_cwgame like retro_raw_gamelogs_cwgame;
 
 drop table if exists retro_allstar_raw_gamelogs_cwgame;
-create table retro_allstar_raw_gamelogs_cwgame (like retro_raw_gamelogs_cwgame);
+create table retro_allstar_raw_gamelogs_cwgame like retro_raw_gamelogs_cwgame;

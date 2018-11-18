@@ -1,9 +1,9 @@
 #!/bin/bash
 
-psql baseball < tables/retro_raw_events.sql
-psql baseball < tables/retro_raw_gamelogs.sql
-psql baseball < tables/retro_raw_gamelogs_cwgame.sql
-psql baseball < tables/retro_raw_sub.sql
+mysql retrosheet < tables/retro_raw_events.sql
+mysql retrosheet < tables/retro_raw_gamelogs.sql
+mysql retrosheet < tables/retro_raw_gamelogs_cwgame.sql
+mysql retrosheet < tables/retro_raw_sub.sql
 
 types=("" postseason allstar)
 for t in "${types[@]}"; do
@@ -16,11 +16,11 @@ for t in "${types[@]}"; do
     fi
     
     echo "#### Loading retro${u}_raw_events..."
-    psql baseball -c "copy retro${u}_raw_events from STDIN with delimiter ',' csv"  < ../data/retrosheet/${src_dir}/playbyplay.csv
+    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_events.csv
     echo "#### Loading retro${u}_raw_gamelogs..."
-    psql baseball -c "copy retro${u}_raw_gamelogs from STDIN with delimiter ',' csv"  < ../data/retrosheet/${src_dir}/gamelogs.csv
+    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_gamelogs.csv
     echo "#### Loading retro${u}_raw_gamelogs_cwgame..."
-    psql baseball -c "copy retro${u}_raw_gamelogs_cwgame from STDIN with delimiter ',' csv"  < ../data/retrosheet/${src_dir}/gamelogs_cwgame.csv
+    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_gamelogs_cwgame.csv
     echo "#### Loading retro${u}_raw_sub..."
-    psql baseball -c "copy retro${u}_raw_sub from STDIN with delimiter ',' csv"  < ../data/retrosheet/${src_dir}/substitutions.csv
+    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_sub.csv
 done

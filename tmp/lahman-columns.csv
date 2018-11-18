@@ -1,0 +1,17 @@
+FieldingOF.csv: playerID,yearID,stint,Glf,Gcf,Grf
+FieldingOFsplit.csv: playerID,yearID,stint,teamID,lgID,POS,G,GS,InnOuts,PO,A,E,DP,PB,WP,SB,CS,ZR
+FieldingPost.csv: playerID,yearID,teamID,lgID,round,POS,G,GS,InnOuts,PO,A,E,DP,TP,PB,SB,CS
+HallOfFame.csv: playerID,yearid,votedBy,ballots,needed,votes,inducted,category,needed_note
+HomeGames.csv: year.key,league.key,team.key,park.key,span.first,span.last,games,openings,attendance
+Managers.csv: playerID,yearID,teamID,lgID,inseason,G,W,L,rank,plyrMgr
+ManagersHalf.csv: playerID,yearID,teamID,lgID,inseason,half,G,W,L,rank
+Parks.csv: park.key,park.name,park.alias,city,state,country
+People.csv: playerID,birthYear,birthMonth,birthDay,birthCountry,birthState,birthCity,deathYear,deathMonth,deathDay,deathCountry,deathState,deathCity,nameFirst,nameLast,nameGiven,weight,height,bats,throws,debut,finalGame,retroID,bbrefID
+Pitching.csv: playerID,yearID,stint,teamID,lgID,W,L,G,GS,CG,SHO,SV,IPouts,H,ER,HR,BB,SO,BAOpp,ERA,IBB,WP,HBP,BK,BFP,GF,R,SH,SF,GIDP
+PitchingPost.csv: playerID,yearID,round,teamID,lgID,W,L,G,GS,CG,SHO,SV,IPouts,H,ER,HR,BB,SO,BAOpp,ERA,IBB,WP,HBP,BK,BFP,GF,R,SH,SF,GIDP
+Salaries.csv: yearID,teamID,lgID,playerID,salary
+Schools.csv: schoolID,name_full,city,state,country
+SeriesPost.csv: yearID,round,teamIDwinner,lgIDwinner,teamIDloser,lgIDloser,wins,losses,ties
+Teams.csv: yearID,lgID,teamID,franchID,divID,Rank,Ghome,DivWin,WCWin,LgWin,WSWin,name,park,attendance,BPF,PPF,teamIDBR,teamIDlahman45,teamIDretro
+TeamsFranchises.csv: franchID,franchName,active,NAassoc
+TeamsHalf.csv: yearID,lgID,teamID,Half,divID,DivWin,Rank,G,W,L
