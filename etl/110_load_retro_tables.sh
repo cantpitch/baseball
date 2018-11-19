@@ -16,11 +16,11 @@ for t in "${types[@]}"; do
     fi
     
     echo "#### Loading retro${u}_raw_events..."
-    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_events.csv
+    mysql retrosheet -e "LOAD DATA INFILE '$HOME/Projects/toolsofignorance/data/retrosheet/${src_dir}/retro${u}_raw_events.csv' INTO TABLE retro${u}_raw_events FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"'"
     echo "#### Loading retro${u}_raw_gamelogs..."
-    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_gamelogs.csv
+    mysql retrosheet -e "LOAD DATA INFILE '$HOME/Projects/toolsofignorance/data/retrosheet/${src_dir}/retro${u}_raw_gamelogs.csv' INTO TABLE retro${u}_raw_gamelogs FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"'"
     echo "#### Loading retro${u}_raw_gamelogs_cwgame..."
-    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_gamelogs_cwgame.csv
+    mysql retrosheet -e "LOAD DATA INFILE '$HOME/Projects/toolsofignorance/data/retrosheet/${src_dir}/retro${u}_raw_gamelogs_cwgame.csv' INTO TABLE retro${u}_raw_gamelogs_cwgame FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"'"
     echo "#### Loading retro${u}_raw_sub..."
-    mysqlimport baseball ../data/retrosheet/${src_dir}/retro${u}_raw_sub.csv
+    mysql retrosheet -e "LOAD DATA INFILE '$HOME/Projects/toolsofignorance/data/retrosheet/${src_dir}/retro${u}_raw_sub.csv' INTO TABLE retro${u}_raw_sub FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"'"
 done

@@ -1,15 +1,17 @@
+DROP TABLE IF EXISTS Allstar;
 CREATE TABLE Allstar (
     LahmanId VARCHAR(9), 
-    `Year` SMALLINT
+    `Year` SMALLINT,
     GameNum TINYINT UNSIGNED,
     RetroGameId VARCHAR(12),
     LahmanTeamId VARCHAR(3),
     LeagueId VARCHAR(2),
     GP TINYINT UNSIGNED,
     StartingPos TINYINT UNSIGNED,
-    PRIMARY KEY (LahmanId, `Year`)
+    PRIMARY KEY (LahmanId, `Year`, GameNum)
 );
 
+DROP TABLE IF EXISTS Appearances;
 CREATE TABLE Appearances (
     `Year` SMALLINT UNSIGNED,
     LahmanTeamId VARCHAR(3),
@@ -35,6 +37,7 @@ CREATE TABLE Appearances (
     PRIMARY KEY (`Year`, LahmanTeamId, LeagueId, LahmanId)
 );
 
+DROP TABLE IF EXISTS AwardsManagers;
 CREATE TABLE AwardsManagers (
     LahmanId VARCHAR(9),
     AwardName VARCHAR(50),
@@ -45,6 +48,7 @@ CREATE TABLE AwardsManagers (
     PRIMARY KEY (LahmanId, AwardName, `Year`, LeagueId)
 );
 
+DROP TABLE IF EXISTS AwardsPlayers;
 CREATE TABLE AwardsPlayers (
     LahmanId VARCHAR(9),
     AwardName VARCHAR(50),
@@ -55,6 +59,7 @@ CREATE TABLE AwardsPlayers (
     PRIMARY KEY (LahmanId, AwardName, `Year`, LeagueId)
 );
 
+DROP TABLE IF EXISTS AwardsShareManagers;
 CREATE TABLE AwardsShareManagers (
     AwardName VARCHAR(50),
     `Year` SMALLINT UNSIGNED,
@@ -66,6 +71,7 @@ CREATE TABLE AwardsShareManagers (
     PRIMARY KEY (AwardName, `Year`, LeagueId, LahmanId)
 );
 
+DROP TABLE IF EXISTS AwardsSharePlayers;
 CREATE TABLE AwardsSharePlayers (
     AwardName VARCHAR(50),
     `Year` SMALLINT UNSIGNED,
@@ -77,6 +83,7 @@ CREATE TABLE AwardsSharePlayers (
     PRIMARY KEY (AwardName, `Year`, LeagueId, LahmanId)
 );
 
+DROP TABLE IF EXISTS Batting;
 CREATE TABLE Batting (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -103,6 +110,7 @@ CREATE TABLE Batting (
     PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId)
 );
 
+DROP TABLE IF EXISTS BattingPost;
 CREATE TABLE BattingPost (
     `Year` SMALLINT UNSIGNED,
     `Round` VARCHAR(5),
@@ -129,6 +137,7 @@ CREATE TABLE BattingPost (
     PRIMARY KEY (`Year`, `Round`, LahmanId, LahmanTeamId, LeagueId)
 );
 
+DROP TABLE IF EXISTS CollegePlaying;
 CREATE TABLE CollegePlaying (
     LahmanId VARCHAR(9),
     SchoolId VARCHAR(15),
@@ -136,6 +145,7 @@ CREATE TABLE CollegePlaying (
     PRIMARY KEY (LahmanId, SchoolId, `Year`)
 );
 
+DROP TABLE IF EXISTS Fielding;
 CREATE TABLE Fielding (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -158,6 +168,7 @@ CREATE TABLE Fielding (
     PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId, `Position`)
 );
 
+DROP TABLE IF EXISTS FieldingOF;
 CREATE TABLE FieldingOF (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -168,6 +179,7 @@ CREATE TABLE FieldingOF (
     PRIMARY KEY (LahmanId, `Year`, Stint)
 );
 
+DROP TABLE IF EXISTS FieldingOFSplit;
 CREATE TABLE FieldingOFSplit (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -190,6 +202,7 @@ CREATE TABLE FieldingOFSplit (
     PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId, `Position`)
 );
 
+DROP TABLE IF EXISTS FieldingPost;
 CREATE TABLE FieldingPost (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -211,6 +224,7 @@ CREATE TABLE FieldingPost (
     PRIMARY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, `Round`, `Position`)
 );
 
+DROP TABLE IF EXISTS HallOfFame;
 CREATE TABLE HallOfFame ( 
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -221,9 +235,10 @@ CREATE TABLE HallOfFame (
     Inducted ENUM('Y','N'),
     Category VARCHAR(20),
     NeededNote VARCHAR(20),
-    PRIMARY KEY (LahmanId, `Year`)
+    PRIMARY KEY (LahmanId, `Year`, VotedBy)
 );
 
+DROP TABLE IF EXISTS HomeGames;
 CREATE TABLE HomeGames (
     `Year` SMALLINT UNSIGNED,
     LeagueId VARCHAR(2),
@@ -237,6 +252,7 @@ CREATE TABLE HomeGames (
     PRIMARY KEY (`Year`, LeagueId, LahmanTeamId, RetroParkId)
 );
 
+DROP TABLE IF EXISTS Managers;
 CREATE TABLE Managers (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -246,11 +262,12 @@ CREATE TABLE Managers (
     G TINYINT UNSIGNED,
     W TINYINT UNSIGNED,
     L TINYINT UNSIGNED,
-    Rank TINYINT UNSIGNED,
+    `Rank` TINYINT UNSIGNED,
     PlayerManager ENUM ('Y','N'),
-    PRIMERY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, ManagerNum)
+    PRIMARY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, ManagerNum)
 );
 
+DROP TABLE IF EXISTS ManagersHalf;
 CREATE TABLE ManagersHalf ( 
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -261,10 +278,11 @@ CREATE TABLE ManagersHalf (
     G TINYINT UNSIGNED,
     W TINYINT UNSIGNED,
     L TINYINT UNSIGNED,
-    Rank TINYINT UNSIGNED,
-    PRIMARY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, ManagerNum)
+    `Rank` TINYINT UNSIGNED,
+    PRIMARY KEY (LahmanId, `Year`, LahmanTeamId, LeagueId, ManagerNum, Half)
 );
 
+DROP TABLE IF EXISTS Parks;
 CREATE TABLE Parks (
     RetroParkId VARCHAR(5) PRIMARY KEY,
     ParkName VARCHAR(50),
@@ -274,6 +292,7 @@ CREATE TABLE Parks (
     Country2 VARCHAR(2)
 );
 
+DROP TABLE IF EXISTS People;
 CREATE TABLE People (
     LahmanId VARCHAR(9) PRIMARY KEY,
     BirthYear SMALLINT UNSIGNED,
@@ -301,6 +320,7 @@ CREATE TABLE People (
     BBRefId VARCHAR(9)
 );
 
+DROP TABLE IF EXISTS Pitching;
 CREATE TABLE Pitching (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -321,7 +341,7 @@ CREATE TABLE Pitching (
     BB SMALLINT UNSIGNED,
     SO SMALLINT UNSIGNED,
     BAOpp DECIMAL(4,3),
-    ERA DECIMAL(5,3),
+    ERA DECIMAL(5,2),
     IBB SMALLINT UNSIGNED,
     WP SMALLINT UNSIGNED,
     HBP SMALLINT UNSIGNED,
@@ -335,6 +355,7 @@ CREATE TABLE Pitching (
     PRIMARY KEY (LahmanId, `Year`, Stint, LahmanTeamId, LeagueId)
 );
 
+DROP TABLE IF EXISTS PitchingPost;
 CREATE TABLE PitchingPost (
     LahmanId VARCHAR(9),
     `Year` SMALLINT UNSIGNED,
@@ -355,7 +376,7 @@ CREATE TABLE PitchingPost (
     BB SMALLINT UNSIGNED,
     SO SMALLINT UNSIGNED,
     BAOpp DECIMAL(4,3),
-    ERA DECIMAL(5,3),
+    ERA DECIMAL(5,2),
     IBB SMALLINT UNSIGNED,
     WP SMALLINT UNSIGNED,
     HBP SMALLINT UNSIGNED,
@@ -369,6 +390,7 @@ CREATE TABLE PitchingPost (
     PRIMARY KEY (LahmanId, `Year`, `Round`, LahmanTeamId, LeagueId)
 );
 
+DROP TABLE IF EXISTS Salaries;
 CREATE TABLE Salaries (
     `Year` SMALLINT UNSIGNED,
     LahmanTeamId VARCHAR(3),
@@ -378,6 +400,7 @@ CREATE TABLE Salaries (
     PRIMARY KEY (`Year`, LahmanTeamId, LeagueId, LahmanId)
 );
 
+DROP TABLE IF EXISTS Schools;
 CREATE TABLE Schools (
     SchoolId VARCHAR(15) PRIMARY KEY,
     Name VARCHAR(100),
@@ -386,6 +409,7 @@ CREATE TABLE Schools (
     Country3 VARCHAR(3)
 );
 
+DROP TABLE IF EXISTS SeriesPost;
 CREATE TABLE SeriesPost (
     `Year` SMALLINT UNSIGNED,
     `Round` VARCHAR(5),
@@ -399,13 +423,14 @@ CREATE TABLE SeriesPost (
     PRIMARY KEY (`Year`, `Round`)
 );
 
+DROP TABLE IF EXISTS Teams;
 CREATE TABLE Teams (
     `Year` SMALLINT UNSIGNED,
     LeagueId VARCHAR(2),
     LahmanTeamId VARCHAR(3),
     LahmanFranchId VARCHAR(3),
     Division ENUM('E','W','C'),
-    Rank TINYINT UNSIGNED,
+    `Rank` TINYINT UNSIGNED,
     GHome TINYINT UNSIGNED,
     WonDivision ENUM('Y','N'),
     WonWildCard ENUM('Y','N'),
@@ -422,6 +447,7 @@ CREATE TABLE Teams (
     PRIMARY KEY (`Year`, LeagueId, LahmanTeamId, LahmanFranchId)
 );
 
+DROP TABLE IF EXISTS TeamsFranchises;
 CREATE TABLE TeamsFranchises (
     LahmanFranchId VARCHAR(3) PRIMARY KEY,
     Name VARCHAR(50),
@@ -429,6 +455,7 @@ CREATE TABLE TeamsFranchises (
     NALahmanTeamId VARCHAR(3)
 );
 
+DROP TABLE IF EXISTS TeamsHalf;
 CREATE TABLE TeamsHalf (
     `Year` SMALLINT UNSIGNED,
     LeagueId VARCHAR(2),
@@ -436,7 +463,7 @@ CREATE TABLE TeamsHalf (
     Half TINYINT UNSIGNED,
     Division ENUM('E','W','C'),
     WonDivision ENUM('Y','N'),
-    Rank TINYINT UNSIGNED,
+    `Rank` TINYINT UNSIGNED,
     G TINYINT UNSIGNED,
     W TINYINT UNSIGNED,
     L TINYINT UNSIGNED,

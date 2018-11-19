@@ -30,6 +30,13 @@ unzip '../../zips/baseballdatabank-*.zip'
 ### Move the lahman csv files to the base dir
 find . -name *.csv -exec sh -c 'mv {} $(basename {})' \;
 chmod -x *.csv
+dos2unix *.csv
+gsed -i -e 's/,,/,\\N,/g' *.csv
+gsed -i -e 's/,,/,\\N,/g' *.csv
+gsed -i -e 's/^,/\\N,/g' *.csv
+gsed -i -e 's/,$/,\\N/g' *.csv
+gsed -i -e 's/,inf,/,\\N,/g' *.csv
+
 ### Remove the subdir
 rm -rf baseballdatabank*
 

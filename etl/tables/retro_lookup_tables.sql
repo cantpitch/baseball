@@ -160,8 +160,11 @@ create table retro_parks (
 
 drop table if exists retro_players;
 create table retro_players (
+    retro_id varchar(8),
     name_last varchar(25),
     name_first varchar(25),
-    retro_id varchar(8),
-    debut_date date
+    player_debut_date date,
+    manager_debut_date date,
+    coach_debut_date date,
+    umpire_debut_date date
 );

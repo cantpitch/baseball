@@ -35,6 +35,12 @@ for d in sub_dirs:
         remove(sub_file)
     
     call(f'cat GL*.TXT > {gamelogs_file}', shell=True)
+    call(f'dos2unix {gamelogs_file}', shell=True)
+    call(f'gsed -i -e \'s/,,/,\\\\N,/g\' {gamelogs_file}', shell=True)
+    call(f'gsed -i -e \'s/,,/,\\\\N,/g\' {gamelogs_file}', shell=True)
+    call(f'gsed -i -e \'s/^,/\\\\N,/g\' {gamelogs_file}', shell=True)
+    call(f'gsed -i -e \'s/,$/,\\\\N/g\' {gamelogs_file}', shell=True)
+
     
     for filename in files:
         print(f'Processing {filename}')
