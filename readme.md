@@ -28,7 +28,7 @@ development using [pipenv](https://pipenv.readthedocs.io/en/latest/):
 
     brew install pipenv
     cd [your project directory]
-    pipenv --python 3.7 --site-packages
+    pipenv --python 3.7
     pipenv shell
 
 In order to use the local libraries add a `.pth` file in 
